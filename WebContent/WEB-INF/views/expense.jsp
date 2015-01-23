@@ -56,11 +56,24 @@
 		<button type="button" class="btn btn-primary" id="addExpense"
 			data-toggle="modal" data-target="#myModal">Add Expense</button>
 
-		<p><ul class="list-group-expense">
-				<c:forEach items="${listOfExpenses}" var="expense">
-					<li class="list-group-item">${expense.amount}</li>
-				</c:forEach>
-			</ul></p>
+		<div class="table-responsive">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Tag</th>
+						<th>Amount</th>
+						<th>Date</th>
+					</tr>
+					<c:forEach items="${listOfExpenses}" var="expense">
+						<tr>
+							<td>${expense.tag}</td>
+							<td>${expense.amount}</td>
+							<td>${expense.transactionDate}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 
