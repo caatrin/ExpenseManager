@@ -42,8 +42,7 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
-							<input type="submit" value="Save"
-								class="btn btn-primary">
+							<input type="submit" value="Save" class="btn btn-primary">
 						</div>
 					</form>
 				</div>
@@ -59,12 +58,11 @@
 		<button type="button" class="btn btn-primary" id="addIncome"
 			data-toggle="modal" data-target="#myModal">Add Income</button>
 
-
-		<ul class="list-group-income">
+		<p><ul class="list-group-income">
 			<c:forEach items="${listOfIncomes}" var="income">
 				<li class="list-group-item">${income.amount}</li>
 			</c:forEach>
-		</ul>
+		</ul></p>
 	</div>
 </body>
 </html>

@@ -5,13 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- Latest compiled and minified CSS -->
 <title>Expense</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 
-<div class="modal fade" id="myModal" hidden="true" tabindex="-1"
+	<div class="modal fade" id="myModal" hidden="true" tabindex="-1"
 		role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -23,27 +22,27 @@
 					<h4 class="modal-title">Add Expense</h4>
 				</div>
 				<div class="modal-body">
-					<form action="">
+					<form action="/ExpenseManager/expense" method="post">
 						<div class="form-group">
 							<label for="amount">Amount</label> <input name="amount"
 								type="text" class="form-control" id="amount"
 								placeholder="Enter amount">
 						</div>
 						<div class="form-group">
-							<label for="tag">Tag</label> <input type="text"
+							<label for="tag">Tag</label> <input type="text" name="tag"
 								class="form-control" id="tag" placeholder="Enter tag">
 						</div>
 						<div class="form-group">
 							<label for="transactionDate">Transaction Date</label> <input
 								type="date" class="form-control" id="transactionDate"
-								placeholder="Enter transaction date">
+								name="transactionDate" placeholder="Enter transaction date">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<input type="submit" value="Save" class="btn btn-primary">
 						</div>
 					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="submit" value="Save" data-dismiss="modal"
-						class="btn btn-primary">
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -56,16 +55,12 @@
 	<div class="container">
 		<button type="button" class="btn btn-primary" id="addExpense"
 			data-toggle="modal" data-target="#myModal">Add Expense</button>
-			
-			
-	
-	<ul class="list-group-expense">
-		<li class="list-group-item">Cras justo odio</li>
-		<li class="list-group-item">Dapibus ac facilisis in</li>
-		<li class="list-group-item">Morbi leo risus</li>
-		<li class="list-group-item">Porta ac consectetur ac</li>
-		<li class="list-group-item">Vestibulum at eros</li>
-	</ul>
+
+		<p><ul class="list-group-expense">
+				<c:forEach items="${listOfExpenses}" var="expense">
+					<li class="list-group-item">${expense.amount}</li>
+				</c:forEach>
+			</ul></p>
 	</div>
 
 
