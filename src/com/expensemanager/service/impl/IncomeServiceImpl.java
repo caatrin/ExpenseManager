@@ -1,5 +1,6 @@
 package com.expensemanager.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,15 @@ public class IncomeServiceImpl implements IncomeService {
 	@Override
 	public void addIncome(Income income) {
 		transactionRepository.save(income);
+		
+		
 	}
 
 	@Override
 	public List<Income> getAllIncomes() {
-		return transactionRepository.getAllIncomes();
+		List<Income> incomes = transactionRepository.getAllIncomes();
+		Collections.sort(incomes);
+		return incomes;
 	}
 
 }

@@ -57,12 +57,24 @@
 	<div class="container">
 		<button type="button" class="btn btn-primary" id="addIncome"
 			data-toggle="modal" data-target="#myModal">Add Income</button>
-
-		<p><ul class="list-group-income">
-			<c:forEach items="${listOfIncomes}" var="income">
-				<li class="list-group-item">${income.amount}</li>
-			</c:forEach>
-		</ul></p>
+		<div class="table-responsive">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Tag</th>
+						<th>Amount</th>
+						<th>Transaction Date</th>
+					</tr>
+					<c:forEach items="${listOfIncomes}" var="income">
+						<tr>
+							<td>${income.tag}</td>
+							<td>${income.amount}</td>
+							<td>${income.transactionDate}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

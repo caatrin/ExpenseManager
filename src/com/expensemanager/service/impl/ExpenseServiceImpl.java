@@ -1,5 +1,6 @@
 package com.expensemanager.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,9 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 	@Override
 	public List<Expense> getAllExpenses() {
-		return transactionRepository.getAllExpenses();
+		List<Expense> expenses = transactionRepository.getAllExpenses();
+		Collections.sort(expenses);
+		return expenses;
 	}
 
 }
