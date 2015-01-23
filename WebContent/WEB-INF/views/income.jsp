@@ -24,27 +24,28 @@
 					<h4 class="modal-title">Add Income</h4>
 				</div>
 				<div class="modal-body">
-					<form action="">
+					<form action="/ExpenseManager/income" method="post">
 						<div class="form-group">
 							<label for="amount">Amount</label> <input name="amount"
 								type="text" class="form-control" id="amount"
 								placeholder="Enter amount">
 						</div>
 						<div class="form-group">
-							<label for="tag">Tag</label> <input type="text"
+							<label for="tag">Tag</label> <input type="text" name="tag"
 								class="form-control" id="tag" placeholder="Enter tag">
 						</div>
 						<div class="form-group">
 							<label for="transactionDate">Transaction Date</label> <input
 								type="date" class="form-control" id="transactionDate"
-								placeholder="Enter transaction date">
+								name="transactionDate" placeholder="Enter transaction date">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<input type="submit" value="Save"
+								class="btn btn-primary">
 						</div>
 					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="submit" value="Save" data-dismiss="modal"
-						class="btn btn-primary">
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -60,11 +61,9 @@
 
 
 		<ul class="list-group-income">
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Dapibus ac facilisis in</li>
-			<li class="list-group-item">Morbi leo risus</li>
-			<li class="list-group-item">Porta ac consectetur ac</li>
-			<li class="list-group-item">Vestibulum at eros</li>
+			<c:forEach items="${listOfIncomes}" var="income">
+				<li class="list-group-item">${income.amount}</li>
+			</c:forEach>
 		</ul>
 	</div>
 </body>

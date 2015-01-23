@@ -6,7 +6,7 @@ public abstract class Transaction {
 	
 	private double amount;
 	private String tag;
-	private Date transactionDate;
+	private String transactionDate;
 	
 	
 	public double getAmount() {
@@ -21,12 +21,13 @@ public abstract class Transaction {
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
-	public Date getTransactionDate() {
+	public String getTransactionDate() {
 		return transactionDate;
 	}
-	public void setTransactionDate(Date transactionDate) {
+	public void setTransactionDate(String transactionDate) {
 		this.transactionDate = transactionDate;
 	}
+	
 	
 	
 
