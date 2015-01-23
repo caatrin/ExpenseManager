@@ -1,8 +1,9 @@
 package com.expensemanager.domain;
 
+import java.util.Comparator;
 import java.util.Date;
 
-public abstract class Transaction {
+public abstract class Transaction implements Comparable<Transaction>{
 	
 	private double amount;
 	private String tag;
@@ -28,6 +29,11 @@ public abstract class Transaction {
 		this.transactionDate = transactionDate;
 	}
 	
+	@Override
+	public int compareTo(Transaction o) {
+		// TODO Auto-generated method stub
+		return o.getTransactionDate().compareTo(this.getTransactionDate());
+	}
 	
 	
 
