@@ -20,7 +20,6 @@ public class IncomeController {
 	}
 	@RequestMapping(value="/income", method = RequestMethod.POST)
 	public ModelAndView addIncome(Income income){
-		System.out.println("Hello");
 		incomeService.addIncome(income);
 		return initModelAndView();	
 	}

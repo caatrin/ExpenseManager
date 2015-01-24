@@ -10,11 +10,22 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
-<div class="row">
-  <div class="col-xs-4"><h4>Total Income</h4><h3>300</h3></div>
-  <div class="col-xs-4"><h4>Total Expense</h4><h3>300</h3></div>
-  <div class="col-xs-4"><h4>Balance</h4><h3>300</h3></div>
-</div>
+<div class="table-responsive">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Total Income</th>
+						<th>Total Expenses</th>
+						<th>Balance</th>
+					</tr>
+						<tr>
+							<td>${sumIncome}</td>
+							<td>${sumExpense}</td>
+							<td>${balance}</td>
+						</tr>
+				</tbody>
+			</table>
+		</div>
 </div>
 
 </body>

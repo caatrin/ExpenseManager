@@ -55,14 +55,13 @@
 	<div class="container">
 		<button type="button" class="btn btn-primary" id="addExpense"
 			data-toggle="modal" data-target="#myModal">Add Expense</button>
-
 		<div class="table-responsive">
 			<table class="table">
 				<tbody>
 					<tr>
 						<th>Tag</th>
 						<th>Amount</th>
-						<th>Date</th>
+						<th>Transaction Date</th>
 					</tr>
 					<c:forEach items="${listOfExpenses}" var="expense">
 						<tr>

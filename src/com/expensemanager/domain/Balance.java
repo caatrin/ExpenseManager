@@ -21,26 +21,19 @@ public class Balance {
 		return sumIncomes;
 	}
 	
+	public void setSumIncomes(double sumIncomes) {
+		this.sumIncomes = sumIncomes;
+	}
+
 	public double getSumExpenses() {
 		return sumExpenses;
 	}
 	
-	public void setSum(){
-		for (Transaction transaction : transactions) {
-			if(transaction instanceof Income){
-				sumIncomes += transaction.getAmount();
-			}else{
-				sumExpenses += transaction.getAmount();
-			}
-		}
-		
+	public void setSumExpenses(double sumExpenses) {
+		this.sumExpenses = sumExpenses;
 	}
-	
-	public double computeBalance() {
-		setSum();
-		return sumIncomes - sumExpenses;
+
+
 		
-	}
-	
 
 }

@@ -23,7 +23,6 @@ public class TransactionRepositoryInMemoryImpl implements TransactionRepository{
 
 	@Override
 	public List<Transaction> getAll() {
-		// TODO Auto-generated method stub
 		return listOfTransactions;
 	}
 
