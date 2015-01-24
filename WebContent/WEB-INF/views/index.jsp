@@ -8,8 +8,10 @@
 <title>Welcome</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"/>
-I'm the welcome page
-
+	<jsp:include page="/WEB-INF/views/header.jsp" />
+	<div id="wrap">
+		<div class="container">I'm the welcome page</div>
+	</div>
 </body>
+<jsp:include page="/WEB-INF/views/footer.jsp" />
 </html>
