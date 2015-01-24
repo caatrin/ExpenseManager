@@ -26,16 +26,16 @@
 						<div class="form-group">
 							<label for="amount">Amount</label> <input name="amount"
 								type="text" class="form-control" id="amount"
-								placeholder="Enter amount">
+								placeholder="Enter amount" data-validation="number" data-validation-allowing="float">
 						</div>
 						<div class="form-group">
 							<label for="tag">Tag</label> <input type="text" name="tag"
-								class="form-control" id="tag" placeholder="Enter tag">
+								class="form-control" id="tag" placeholder="Enter tag" data-validation="required" >
 						</div>
 						<div class="form-group">
 							<label for="transactionDate">Transaction Date</label> <input
-								type="date" class="form-control" id="transactionDate"
-								name="transactionDate" placeholder="Enter transaction date">
+								type="text" class="form-control" id="transactionDate"
+								name="transactionDate" placeholder="Enter transaction date as mm/dd/yyyy" data-validation="date" data-validation-format="mm/dd/yyyy">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
@@ -75,6 +75,6 @@
 		</div>
 	</div>
 
-
 </body>
+<script> $.validate(); </script>
 </html>
