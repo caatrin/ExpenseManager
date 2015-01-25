@@ -9,6 +9,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
+	<jsp:include page="/WEB-INF/views/headerPre.jsp" />
 	<div id="wrap">
 		<div class="container">I'm the welcome page</div>
 	</div>
