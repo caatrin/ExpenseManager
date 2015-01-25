@@ -1,7 +1,6 @@
 package com.expensemanager.domain;
 
 import java.util.List;
-
 public class Balance {
 	
 	private List<Transaction> transactions;
