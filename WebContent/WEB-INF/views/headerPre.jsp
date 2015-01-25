@@ -27,13 +27,13 @@
 			id="bs-example-navbar-collapse-1">
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><form class="navbar-form">
+				<li><form action="signin" method="post" class="navbar-form">
 						<div class="form-group">
-							<input type="email" class="form-control" placeholder="Email">
+							<input type="email" class="form-control" placeholder="Email" name="email">
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control"
-								placeholder="Password">
+								placeholder="Password" name="password">
 						</div>
 						<button type="submit" class="btn btn-default">Sign In</button>
 					</form></li>

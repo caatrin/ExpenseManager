@@ -11,4 +11,6 @@ import com.expensemanager.domain.User;
 public interface UserRepository extends CrudRepository<User, Long> {
 	@Query("SELECT c FROM User c")
 	public List<User> getAllUsers();
+	
+	public User getUserByEmail(String email);
 }

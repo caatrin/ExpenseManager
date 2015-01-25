@@ -30,7 +30,12 @@
 				<li><a href="/ExpenseManager/balance">Balance</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Sign Out</a></li>
+				<li>
+					<form action="signout" method="post" class="navbar-form">
+						<button type="submit" class="btn btn-default">Sign Out</button>
+					</form>
+				</li>
+
 
 			</ul>
 		</div>
