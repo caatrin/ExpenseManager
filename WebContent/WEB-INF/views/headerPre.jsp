@@ -23,14 +23,11 @@
 			</button>
 			<a class="navbar-brand" href="/ExpenseManager">Expense Manager</a>
 		</div>
-		<div class="navbar-collapse collapse navbar-inverse-collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="/ExpenseManager/income">Income</a></li>
-				<li><a href="/ExpenseManager/expense">Expenses</a></li>
-				<li><a href="/ExpenseManager/balance">Balance</a></li>
-			</ul>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Sign Out</a></li>
+				<li><a href="#">Sign In</a></li>
+				<li><a href="/ExpenseManager/register">Register</a></li>
 
 			</ul>
 		</div>
