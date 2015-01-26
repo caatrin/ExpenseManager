@@ -13,7 +13,6 @@ import com.expensemanager.service.UserService;
 public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserRepository userRepository;
-	private User user;
 	
 	@Override
 	public void addUser(User user) {
@@ -23,22 +22,15 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public boolean isValid(User user) {
-		user = userRepository.getUserByEmail(user.getEmail());
-		if(user !=null){
-			if(user.getPassword().equals(user.getPassword())){
-				return true;
+	public User isValid(User user) {
+		User actualUser = userRepository.getUserByEmail(user.getEmail());
+		if(actualUser !=null){
+			if(actualUser.getPassword().equals(user.getPassword())){
+				return actualUser;
 			}
 		}
-		return false;
+		return null;
 	}
-
-
-	@Override
-	public User getCurrentUser() {
-		return user;
-	}
-	
 	
 
 }
