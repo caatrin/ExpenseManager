@@ -7,23 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.expensemanager.domain.Expense;
-import com.expensemanager.repository.TransactionRepository;
+import com.expensemanager.repository.ExpenseRepository;
 import com.expensemanager.service.ExpenseService;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
 	@Autowired
-	private TransactionRepository transactionRepository;
+	private ExpenseRepository expenseRepository;
 	
 	@Override
 	public void addExpense(Expense expense) {
-		transactionRepository.save(expense);
+		expenseRepository.save(expense);
 		
 	}
 
 	@Override
-	public List<Expense> getAllExpenses() {
-		List<Expense> expenses = transactionRepository.getAllExpenses();
+	public List<Expense> getAllExpenses(Long id) {
+		List<Expense> expenses = expenseRepository.findAllExpenses(id);
 		Collections.sort(expenses);
 		return expenses;
 	}

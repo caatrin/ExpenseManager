@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(schema="expensemanager")
 @Inheritance
-@DiscriminatorColumn(name="TRANS_TYPE")
+@DiscriminatorColumn(name="transType")
 public abstract class Transaction implements Comparable<Transaction>{
 	
 	@Id
@@ -22,7 +22,7 @@ public abstract class Transaction implements Comparable<Transaction>{
 	private double amount;
 	private String tag;
 	private String transactionDate;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.MERGE})
 	private User user;
 	
 	public User getUser() {

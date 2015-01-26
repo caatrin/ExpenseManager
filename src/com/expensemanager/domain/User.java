@@ -20,7 +20,7 @@ public class User {
 	private String lastName;
 	private String email;
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, mappedBy="user")
     private List<Transaction> transactions;
     
 	public List<Transaction> getTransactions() {
@@ -53,12 +53,19 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", email=" + email + ", password="
 				+ password+"]";
 	}
+
     
     
 

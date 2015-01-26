@@ -14,21 +14,29 @@ import com.expensemanager.service.BalanceService;
 
 @Service
 public class BalanceServiceImpl implements BalanceService {
-	
+	private Long userIden;
 	@Autowired
 	private TransactionRepository transactionRepository;
 	private Balance balance;
-		
-	@PostConstruct
-	public void doSomething(){
+	
+
+	@Override
+	public void loadInitialValues(Long userId) {
+		// TODO Auto-generated method stub
 		balance = new Balance();
-		if (transactionRepository.getAll().isEmpty()) {
+		userIden = userId;
+		if (transactionRepository.getAllTransactions(userId).isEmpty()) {
 			balance.setSumIncomes(0);
 			balance.setSumExpenses(0);
 			
 		} else {
-			balance.setTransactions(transactionRepository.getAll());
+			balance.setTransactions(transactionRepository.getAllTransactions(userId));
 		}	
+	}
+		
+	@PostConstruct
+	public void doSomething(){
+		
 	}
 
 	@Override
@@ -52,8 +60,8 @@ public class BalanceServiceImpl implements BalanceService {
 	private void setSum(){		
 		double sumIncomes = 0;
 		double sumExpenses = 0;
-		if(!transactionRepository.getAll().isEmpty()){
-		for (Transaction transaction : transactionRepository.getAll()) {
+		if(!transactionRepository.getAllTransactions(userIden).isEmpty()){
+		for (Transaction transaction : transactionRepository.getAllTransactions(userIden)) {
 			if(transaction instanceof Income){
 				sumIncomes += transaction.getAmount();
 			}else{
@@ -64,4 +72,5 @@ public class BalanceServiceImpl implements BalanceService {
 		balance.setSumIncomes(sumIncomes); 
 		balance.setSumExpenses(sumExpenses); 
 	}
+
 }

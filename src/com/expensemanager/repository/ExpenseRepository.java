@@ -7,12 +7,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.expensemanager.domain.Transaction;
-
+import com.expensemanager.domain.Expense;
 @Repository
-public interface TransactionRepository extends CrudRepository<Transaction, Long>{
-	@Query("SELECT t FROM Transaction t WHERE t.user.userId = :id")
-	public List<Transaction> getAllTransactions(@Param("id") Long id);
-	
-	
+public interface ExpenseRepository extends CrudRepository<Expense, Long>{
+
+	@Query("SELECT e FROM Expense e WHERE e.user.userId = :id")
+	public List<Expense> findAllExpenses(@Param("id") Long id);
 }
