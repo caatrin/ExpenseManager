@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -13,14 +14,14 @@ import com.expensemanager.domain.User;
 import com.expensemanager.service.UserService;
 
 @Controller
-@SessionAttributes(value = {"page","user"})
+@SessionAttributes(value = {"page","validUser"})
 public class WelcomeController {
 	@Autowired
 	UserService userService;
 	
 	@RequestMapping(value = "/")
 	public String getWelcomePage(Model model){
-		if((User)((ModelMap)model).get("user")==null){
+		if((User)((ModelMap)model).get("validUser")==null){
 			model.addAttribute("page", "headerPre");
 		}else{
 			model.addAttribute("page", "header");
@@ -29,15 +30,17 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String signIn(Model model, User user) {
+	public @ResponseBody boolean signIn(Model model, User user) {
 		User validUser=userService.isValid(user);
+		boolean aux = false;
 		if(validUser!=null){
 			model.addAttribute("page", "header");
-			model.addAttribute("user", validUser);
+			model.addAttribute("validUser", validUser);
+			aux = true;
 		}else{
 			model.addAttribute("page", "headerPre");
 		}
-		return "index";
+		return aux;
 	}
 	
 	@RequestMapping(value="/signout", method = RequestMethod.POST)

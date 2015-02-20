@@ -13,7 +13,7 @@ import com.expensemanager.domain.User;
 import com.expensemanager.service.ExpenseService;
 
 @Controller
-@SessionAttributes(value = {"page","user"})
+@SessionAttributes(value = {"page","validUser"})
 public class ExpenseController {
 	@Autowired
 	ExpenseService expenseService;

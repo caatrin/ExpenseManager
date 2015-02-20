@@ -11,7 +11,7 @@ import com.expensemanager.domain.User;
 import com.expensemanager.service.BalanceService;
 
 @Controller
-@SessionAttributes(value = {"page", "user"})
+@SessionAttributes(value = {"page", "validUser"})
 public class BalanceController {
 
 	@Autowired
