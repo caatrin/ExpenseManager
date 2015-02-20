@@ -27,7 +27,7 @@
 			id="bs-example-navbar-collapse-1">
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><form action="signin" class="navbar-form">
+				<li><form action="signin" method="POST" class="navbar-form">
 						<div class="form-group">
 							<input type="email" class="form-control" placeholder="Email" name="email">
 						</div>
