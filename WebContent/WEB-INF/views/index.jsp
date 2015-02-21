@@ -10,7 +10,14 @@
 <body>
 	<jsp:include page="/WEB-INF/views/${page}.jsp" />
 	<div id="wrap">
-		<div class="container">I'm the welcome page</div>
+		<center><div class="container">I'm the welcome page
+			<c:if test="${error == true}">
+				<div class="form-group">
+					<label class="alert alert-danger" role="alert">Username or
+						Password Invalid!</label>
+				</div>
+			</c:if>
+		</div></center>c
 	</div>
 </body>
 <jsp:include page="/WEB-INF/views/footer.jsp" />

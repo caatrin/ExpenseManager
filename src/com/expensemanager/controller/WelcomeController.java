@@ -32,13 +32,16 @@ public class WelcomeController {
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String signIn(Model model, User user) {
 		User validUser=userService.isValid(user);
+		String page = "index";
 		if(validUser!=null){
 			model.addAttribute("page", "header");
 			model.addAttribute("validUser", validUser);
+			model.addAttribute("error",false);
 		}else{
 			model.addAttribute("page", "headerPre");
+			model.addAttribute("error",true);
 		}
-		return "index";
+		return page;
 	}
 	
 	@RequestMapping(value="/signout", method = RequestMethod.POST)
