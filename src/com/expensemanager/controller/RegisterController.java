@@ -19,6 +19,8 @@ public class RegisterController {
 	
 	@RequestMapping(value="/register",method = RequestMethod.POST)
 	public String doRegister(User user){
+		user.setRole("ROLE_USER");
+		user.setEnabled(true);
 		userService.addUser(user);
 		return "register";
 	}

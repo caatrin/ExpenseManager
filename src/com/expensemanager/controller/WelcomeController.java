@@ -1,6 +1,10 @@
 package com.expensemanager.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.PageContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,8 +23,16 @@ public class WelcomeController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(value = "/")
-	public String getWelcomePage(Model model){
+	@RequestMapping({"/","/welcome"})
+	public String getWelcomePage(Model model,HttpServletRequest request){
+		if(request.getUserPrincipal()!=null){
+			User user = new User();
+			user.setEmail(request.getUserPrincipal().getName());
+			User validUser=userService.isValid(user);
+			model.addAttribute("page", "header");
+			model.addAttribute("validUser", validUser);
+			model.addAttribute("error",false);
+		}
 		if((User)((ModelMap)model).get("validUser")==null){
 			model.addAttribute("page", "headerPre");
 		}else{
@@ -29,24 +41,16 @@ public class WelcomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String signIn(Model model, User user) {
-		User validUser=userService.isValid(user);
-		String page = "index";
-		if(validUser!=null){
-			model.addAttribute("page", "header");
-			model.addAttribute("validUser", validUser);
-			model.addAttribute("error",false);
-		}else{
-			model.addAttribute("page", "headerPre");
-			model.addAttribute("error",true);
-		}
-		return page;
+	@RequestMapping(value = "/signerror", method = RequestMethod.GET)
+	public String signIn(Model model) {
+		model.addAttribute("error",true);
+		return "index";
 	}
 	
-	@RequestMapping(value="/signout", method = RequestMethod.POST)
-	public String signOut(Model model, SessionStatus sessionStatus, User user) {
+	@RequestMapping(value="/signout", method = RequestMethod.GET)
+	public String signOut(Model model, SessionStatus sessionStatus) {
 		sessionStatus.setComplete();
+		model.addAttribute("error",false);
 		model.addAttribute("page", "headerPre");
 		return "index";
 		

@@ -27,13 +27,13 @@
 			id="bs-example-navbar-collapse-1">
 			
 			<ul class="nav navbar-nav navbar-right">
-				<li><form action="signin" method="POST" class="navbar-form">
+				<li><form action="<c:url value="/j_spring_security_check"></c:url>" method="POST" class="navbar-form">
 						<div class="form-group">
-							<input type="email" class="form-control" placeholder="Email" name="email">
+							<input type="email" class="form-control" placeholder="Email" name="j_username">
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control"
-								placeholder="Password" name="password">
+								placeholder="Password" name="j_password">
 						</div>
 						<button type="submit" class="btn btn-default">Sign In</button>
 					</form></li>
