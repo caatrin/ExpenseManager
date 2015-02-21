@@ -29,6 +29,13 @@ public class IncomeController {
 		return initModelAndView(model);	
 	}
 	
+	@RequestMapping(value="/income", method = RequestMethod.DELETE)
+	public ModelAndView deleteIncome(Income income, Model model) {
+		income.setUser((User)model.asMap().get("validUser"));
+		incomeService.deleteIncome(income);
+		return initModelAndView(model);	
+	}
+	
 	public ModelAndView initModelAndView(Model model) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("income");

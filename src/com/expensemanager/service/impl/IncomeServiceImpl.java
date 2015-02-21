@@ -23,8 +23,8 @@ public class IncomeServiceImpl implements IncomeService {
 	@Override
 	@Transactional
 	public void addIncome(Income income) {
-		User user = userRepository.findOne(income.getUser().getUserId());
-		income.setUser(user);
+		//User user = userRepository.findOne(income.getUser().getUserId());
+		//income.setUser(user);
 		incomeRepository.save(income);
 	}
 
@@ -33,6 +33,20 @@ public class IncomeServiceImpl implements IncomeService {
 		List<Income> incomes = incomeRepository.findAllIncomes(userId);
 		Collections.sort(incomes);
 		return incomes;
+	}
+
+	@Override
+	public void deleteIncome(Income income) {
+		//User user = userRepository.findOne(income.getUser().getUserId());
+		//user.getTransactions().
+		incomeRepository.delete(income);
+	}
+
+	@Override
+	public void editIncome(Income income) {
+		User user = userRepository.findOne(income.getUser().getUserId());
+		//incomeRepository.
+		
 	}
 
 }
