@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -51,7 +52,6 @@
 	</div>
 	<!-- /.modal -->
 
-
 	<div class="container">
 		<button type="button" class="btn btn-primary" id="addExpense"
 			data-toggle="modal" data-target="#myModal">Add Expense</button>
@@ -62,19 +62,21 @@
 						<th>Tag</th>
 						<th>Amount</th>
 						<th>Transaction Date</th>
+						<th>Options</th>
 					</tr>
 					<c:forEach items="${listOfExpenses}" var="expense">
 						<tr>
 							<td>${expense.tag}</td>
 							<td>${expense.amount}</td>
 							<td>${expense.transactionDate}</td>
+							<td><a href="<spring:url value="/deleteExpense?id=${expense.transactionId}" />">Delete</a>
+							    <a href="">Edit</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-
 </body>
 <script> $.validate(); </script>
 </html>

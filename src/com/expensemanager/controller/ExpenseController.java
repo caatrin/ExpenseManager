@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,9 +24,15 @@ public class ExpenseController {
 	}
 	
 	@RequestMapping(value = "/expense", method = RequestMethod.POST)
-	public ModelAndView addExpense(Expense expense, Model model) {
+	public String addExpense(Expense expense, Model model) {
 		expense.setUser((User)model.asMap().get("validUser"));
 		expenseService.addExpense(expense);
+		return "redirect:/expense";
+	}
+	
+	@RequestMapping(value= "/deleteExpense", method = RequestMethod.GET)
+	public ModelAndView deleteExpense(@RequestParam Long id, Model model) {
+		expenseService.deleteExpense(expenseService.getOne(id));
 		return initModelAndView(model);
 	}
 	
@@ -34,6 +41,7 @@ public class ExpenseController {
 		modelAndView.setViewName("expense");
 		Long userId = ((User)model.asMap().get("validUser")).getUserId();
 		modelAndView.addObject("listOfExpenses", expenseService.getAllExpenses(userId));
+		System.out.println("id: " + expenseService.getAllExpenses(userId).get(0).getTransactionId());
 		return modelAndView;
 		
 	}

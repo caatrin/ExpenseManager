@@ -9,4 +9,5 @@ public interface IncomeService {
 	public void deleteIncome(Income income);
 	public void editIncome(Income income);
 	public List<Income> getAllIncomes(Long userId);	
+	public Income getOne(Long id);
 }

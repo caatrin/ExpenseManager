@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,16 +24,23 @@ public class IncomeController {
 		
 	}
 	@RequestMapping(value="/income", method = RequestMethod.POST)
-	public ModelAndView addIncome(Income income, Model model){
+	public String addIncome(Income income, Model model){
 		income.setUser((User)model.asMap().get("validUser"));
 		incomeService.addIncome(income);
+		return "redirect:/income";	
+	}
+	
+	@RequestMapping(value="/deleteIncome", method = RequestMethod.GET)
+	public ModelAndView deleteIncome(@RequestParam Long id, Model model) {
+		//income.setUser((User)model.asMap().get("validUser"));
+		incomeService.deleteIncome(incomeService.getOne(id));
 		return initModelAndView(model);	
 	}
 	
-	@RequestMapping(value="/income", method = RequestMethod.DELETE)
-	public ModelAndView deleteIncome(Income income, Model model) {
+	@RequestMapping(value="/editIncome", method = RequestMethod.GET)
+	public ModelAndView editIncome(Income income, Model model) {
 		income.setUser((User)model.asMap().get("validUser"));
-		incomeService.deleteIncome(income);
+		incomeService.addIncome(income);
 		return initModelAndView(model);	
 	}
 	

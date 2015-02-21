@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.expensemanager.domain.Income;
-import com.expensemanager.domain.User;
 import com.expensemanager.repository.IncomeRepository;
 import com.expensemanager.repository.UserRepository;
 import com.expensemanager.service.IncomeService;
@@ -23,8 +22,6 @@ public class IncomeServiceImpl implements IncomeService {
 	@Override
 	@Transactional
 	public void addIncome(Income income) {
-		//User user = userRepository.findOne(income.getUser().getUserId());
-		//income.setUser(user);
 		incomeRepository.save(income);
 	}
 
@@ -37,16 +34,18 @@ public class IncomeServiceImpl implements IncomeService {
 
 	@Override
 	public void deleteIncome(Income income) {
-		//User user = userRepository.findOne(income.getUser().getUserId());
-		//user.getTransactions().
 		incomeRepository.delete(income);
 	}
 
 	@Override
 	public void editIncome(Income income) {
-		User user = userRepository.findOne(income.getUser().getUserId());
-		//incomeRepository.
+		incomeRepository.save(income);
 		
+	}
+
+	@Override
+	public Income getOne(Long id) {
+		return incomeRepository.findOne(id);
 	}
 
 }

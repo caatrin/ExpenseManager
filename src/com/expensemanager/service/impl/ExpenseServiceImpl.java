@@ -28,4 +28,21 @@ public class ExpenseServiceImpl implements ExpenseService {
 		return expenses;
 	}
 
+	@Override
+	public void deleteExpense(Expense expense) {
+		expenseRepository.delete(expense);
+		
+	}
+
+	@Override
+	public void editExpense(Expense expense) {
+		expenseRepository.save(expense);
+		
+	}
+
+	@Override
+	public Expense getOne(Long id) {
+		return expenseRepository.findOne(id);
+	}
+
 }

@@ -43,17 +43,25 @@ public abstract class Transaction implements Comparable<Transaction>{
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
+	
 	public String getTransactionDate() {
 		return transactionDate;
 	}
+	
 	public void setTransactionDate(String transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 	
+	public Long getTransactionId() {
+		return transactionId;
+	}
+	public void setTransactionId(Long transactionId) {
+		this.transactionId = transactionId;
+	}
 	@Override
 	public int compareTo(Transaction o) {
 		// TODO Auto-generated method stub
-		return o.getTransactionDate().compareTo(this.getTransactionDate());
+		return this.getTransactionDate().compareTo(o.getTransactionDate());
 	}
 	
 	

@@ -65,12 +65,15 @@
 						<th>Tag</th>
 						<th>Amount</th>
 						<th>Transaction Date</th>
+						<th>Options</th>
 					</tr>
 					<c:forEach items="${listOfIncomes}" var="income">
 						<tr>
-							<td>${income.tag}</td>
+							<td value="">${income.tag}</td>
 							<td>${income.amount}</td>
 							<td>${income.transactionDate}</td>
+							<td><a href="<spring:url value="/deleteIncome?id=${income.transactionId}" />">Delete</a>
+							    <a href="">Edit</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
