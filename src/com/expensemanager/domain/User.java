@@ -20,7 +20,24 @@ public class User {
 	private String lastName;
 	private String email;
     private String password;
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, mappedBy="user")
+    private String role;
+    private boolean enabled;
+    
+    
+    
+    public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	@OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, mappedBy="user")
     private List<Transaction> transactions;
     
 	public List<Transaction> getTransactions() {
