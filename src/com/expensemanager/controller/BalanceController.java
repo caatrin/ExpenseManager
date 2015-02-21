@@ -21,7 +21,7 @@ public class BalanceController {
 	public ModelAndView getBalancePage(Model model) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("balance");
-		Long userId = ((User)model.asMap().get("user")).getUserId();
+		Long userId = ((User)model.asMap().get("validUser")).getUserId();
 		balanceService.loadInitialValues(userId);
 		modelAndView.addObject("sumIncome", balanceService.getTotalIncome());
 		modelAndView.addObject("sumExpense", balanceService.getTotalExpense());

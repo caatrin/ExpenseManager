@@ -24,7 +24,7 @@ public class ExpenseController {
 	
 	@RequestMapping(value = "/expense", method = RequestMethod.POST)
 	public ModelAndView addExpense(Expense expense, Model model) {
-		expense.setUser((User)model.asMap().get("user"));
+		expense.setUser((User)model.asMap().get("validUser"));
 		expenseService.addExpense(expense);
 		return initModelAndView(model);
 	}
@@ -32,7 +32,7 @@ public class ExpenseController {
 	public ModelAndView initModelAndView(Model model) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("expense");
-		Long userId = ((User)model.asMap().get("user")).getUserId();
+		Long userId = ((User)model.asMap().get("validUser")).getUserId();
 		modelAndView.addObject("listOfExpenses", expenseService.getAllExpenses(userId));
 		return modelAndView;
 		

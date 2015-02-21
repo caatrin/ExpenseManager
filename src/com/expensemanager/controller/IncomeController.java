@@ -24,7 +24,7 @@ public class IncomeController {
 	}
 	@RequestMapping(value="/income", method = RequestMethod.POST)
 	public ModelAndView addIncome(Income income, Model model){
-		income.setUser((User)model.asMap().get("user"));
+		income.setUser((User)model.asMap().get("validUser"));
 		incomeService.addIncome(income);
 		return initModelAndView(model);	
 	}
@@ -32,7 +32,7 @@ public class IncomeController {
 	public ModelAndView initModelAndView(Model model) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("income");
-		Long userId = ((User)model.asMap().get("user")).getUserId();
+		Long userId = ((User)model.asMap().get("validUser")).getUserId();
 		modelAndView.addObject("listOfIncomes", incomeService.getAllIncomes(userId));
 		return modelAndView;
 	}
