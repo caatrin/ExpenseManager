@@ -1,5 +1,10 @@
 package com.expensemanager.domain;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -61,7 +66,17 @@ public abstract class Transaction implements Comparable<Transaction>{
 	@Override
 	public int compareTo(Transaction o) {
 		// TODO Auto-generated method stub
-		return this.getTransactionDate().compareTo(o.getTransactionDate());
+		SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
+		Date oldDate=new Date();
+		Date newDate=new Date();
+		try {
+			oldDate = sdf.parse(this.getTransactionDate());
+			newDate = sdf.parse(o.getTransactionDate());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return newDate.compareTo(oldDate);
 	}
 	
 	
