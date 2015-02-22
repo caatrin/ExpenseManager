@@ -25,7 +25,8 @@
 	  <security:intercept-url pattern="/income" access="hasRole('USER')" />  	
 	  <security:intercept-url pattern="/expense" access="hasRole('USER')"  />
  	<security:intercept-url pattern="/balance" access="hasRole('USER')" />
- 	
+ 	<security:intercept-url pattern="/signout" access="hasRole('USER')" />
+ 	<security:intercept-url pattern="/signin" access="hasRole('USER')" />
 		<!-- always-use-default-target overrides where login was triggered -->
 		<!-- logout-url renames j_security_logout URL -->
 
