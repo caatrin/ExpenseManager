@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <div class="navbar navbar-inverse">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -15,7 +16,7 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-				<a class="btn btn-default" href="<spring:url value='/doLogout' />">Logout</a>
+			    <a href="<spring:url value='/doLogout' />">Logout</a>
 			</li>
 		</ul>
 	</div>
