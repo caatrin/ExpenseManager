@@ -41,7 +41,6 @@ public class ExpenseController {
 		modelAndView.setViewName("expense");
 		Long userId = ((User)model.asMap().get("validUser")).getUserId();
 		modelAndView.addObject("listOfExpenses", expenseService.getAllExpenses(userId));
-		System.out.println("id: " + expenseService.getAllExpenses(userId).get(0).getTransactionId());
 		return modelAndView;
 		
 	}
