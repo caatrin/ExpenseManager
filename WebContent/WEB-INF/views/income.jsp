@@ -11,13 +11,12 @@
 	src=<c:url value="resource/javascript/bootstrap.js"/>></script>
 <script type="text/javascript"
 	src=<c:url value="resource/javascript/form-validator/jquery.form-validator.min.js"/>></script>
+<script type="text/javascript" src=<c:url value="resource/javascript/expenseManager.js"/>></script>	
 <link rel="stylesheet" href=<c:url value="resource/css/bootstrap.css"/>>
 <title>Income</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
-
-
 
 	<div class="modal fade" id="myModal" hidden="true" tabindex="-1"
 		role="dialog">
@@ -31,8 +30,10 @@
 					<h4 class="modal-title">Add Income</h4>
 				</div>
 				<div class="modal-body">
-					<form action="/ExpenseManager/income" method="post">
+					<form id="addIncomeForm" action="/ExpenseManager/income" method="post">
+						<div id="hiddenId"></div>
 						<div class="form-group">
+						
 							<label for="amount">Amount</label> <input name="amount"
 								type="text" class="form-control" id="amount"
 								placeholder="Enter amount" data-validation="number" data-validation-allowing="float">
@@ -79,7 +80,9 @@
 							<td>${income.amount}</td>
 							<td>${income.transactionDate}</td>
 							<td><a href="<spring:url value="/deleteIncome?id=${income.transactionId}" />">Delete</a>
-							    <a href="">Edit</a></td>
+							    <a href="" data-amount="${income.amount}" id="editTrans" data-tag="${income.tag}" 
+							     data-transactiondate="${income.transactionDate}" data-transactionid="${income.transactionId}" 
+							     data-toggle="modal" data-target="#myModal">Edit</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
