@@ -65,7 +65,6 @@ public abstract class Transaction implements Comparable<Transaction>{
 	}
 	@Override
 	public int compareTo(Transaction o) {
-		// TODO Auto-generated method stub
 		SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
 		Date oldDate=new Date();
 		Date newDate=new Date();
@@ -73,7 +72,6 @@ public abstract class Transaction implements Comparable<Transaction>{
 			oldDate = sdf.parse(this.getTransactionDate());
 			newDate = sdf.parse(o.getTransactionDate());
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return newDate.compareTo(oldDate);

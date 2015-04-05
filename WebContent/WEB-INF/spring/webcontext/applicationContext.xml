@@ -62,7 +62,7 @@
      <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="username" value="root"/>
-        <property name="password" value="123456"/>
+        <property name="password" value=""/>
         <property name="url" value="jdbc:mysql://localhost/expensemanager"/>
     </bean>
  <!-- ;INIT=runscript from 'classpath:create.sql'\;runscript from 'classpath:populate.sql' -->
